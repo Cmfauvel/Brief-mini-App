@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { users } from '../users';
+import { CardUserComponent } from '../card-user/card-user.component'
 
 @Component({
   selector: 'app-usrs-list',
@@ -8,6 +9,9 @@ import { users } from '../users';
 })
 export class UsrsListComponent implements OnInit {
   users = users;
+  share() {
+    window.alert('The product has been shared!');
+  }
   constructor() { }
 
   ngOnInit(): void {

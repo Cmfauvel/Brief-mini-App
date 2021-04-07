@@ -1,6 +1,21 @@
-<div *ngFor="let user of users">
-    <h3> {{ user.name.title }} {{ user.name.first }} {{ user.name.last }} </h3>
+<div *ngFor="let user of users" class="user__card">
+    <h3><a [title]="user.name + ' details'" [routerLink]="['card/', user.login.uuid]">
+            {{ user.name.title }} {{ user.name.first }} {{ user.name.last }}
+        </a></h3>
     <div class="container__image">
-        <img src="{{user.picture.medium}}" alt="">
+        <img src="{{user.picture.medium}}" alt="Photo de profil">
     </div>
+    <p>{{ user.email }}</p>
+    <div *ngIf="user.dob.age<=40" class="container__icon">
+        <img src="../assets/rookie.svg" alt="">
+    </div>
+    <div *ngIf="user.dob.age>40&&user.dob.age<60" class="container__icon">
+        <img src="../assets/advance.svg" alt="">
+    </div>
+    <div *ngIf="user.dob.age>=60" class="container__icon">
+        <img src="../assets/expert.svg" alt="">
+    </div>
+    <a [title]="user.name + ' details'" [routerLink]="['card/', user.login.uuid]"><button>Details</button></a>
+    
+    
 </div>
